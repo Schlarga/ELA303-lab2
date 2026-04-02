@@ -36,3 +36,5 @@ l.	Incorrect or mixed separators (e.g. . or * instead of - or space)
 m.	All identical digits (e.g. 1111111111111111, 0000000000000000)
 
 n.	Anything else you may find possible to fail the program
+
+Quebert sucks

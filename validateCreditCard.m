@@ -1,11 +1,54 @@
 function isValid = validateCreditCard(cardNumber)
+    
+   % Test case l
+   incorrectSeparators = ['*' '.' '_' ':' ';' ',' '|' '&'];
+
+   if contains(cardNumber,'-') && contains(cardNumber,' ')
+       disp("Mixed separators")
+       return
+   else 
+       for k=1:length(incorrectSeparators)
+           if contains(cardNumber, incorrectSeparators(k))
+               disp("Incorrect separators")
+               return
+           end
+       end
+   end
+
    % Remove separators (spaces or dashes) and convert to array of digits
    cardNumber = strrep(cardNumber, '-', '');
    cardNumber = strrep(cardNumber, ' ', '');
    digits = double(cardNumber) - 48; % Convert ASCII to numeric values
    
+   % Testing
+   disp(digits)
+   
    n = length(digits);
    
+   % Test case i and j
+
+   if n > 19 || n < 13
+       if n > 19
+           disp("Too long input string")
+       else
+           disp("Too short input string")
+       end
+       return
+   end
+    
+   % Test case k
+
+   for k=1:n
+       if(digits(k) == -2 || digits(k) == -4)
+           disp("Decimal number detected")
+           return
+
+       elseif(digits(k) > 9 || digits(k) < 0)
+           disp("Special characters or letters detected")
+           return
+       end
+   end
+
    % Test case a
    % Card lenghts 13-19
    acceptedCardLengths = [13 14 15 16 17 18 19];
@@ -92,6 +135,3 @@ function isValid = validateCreditCard(cardNumber)
       disp('The credit card number is invalid.');
    end
 end
-
-
-
