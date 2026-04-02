@@ -1,8 +1,10 @@
 ELA303 - Robust Electronics for Dependable Systems
+
 LAB2 - Credit Card Number Validation Using the Luhn Algorithm
 Robustness Testing
 
 Test Cases:
+
 a.	Valid and invalid card number lengths (13, 15, 16, 17, 19 digits — different credit card types have
 different valid lengths)
 
