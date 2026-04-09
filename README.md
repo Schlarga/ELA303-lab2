@@ -25,3 +25,4 @@ k.	Characters, special characters, floats etc. as input strings
 
 l.	Incorrect or mixed separators (e.g. . or * instead of - or space)
 
+n. Anything else you may find possible to fail the program
