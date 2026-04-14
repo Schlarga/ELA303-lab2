@@ -67,7 +67,7 @@ function isValid = validateCreditCard(cardNumber)
    % Test case b
    % Visa, Mastercard, Amex, Diners Club International
 
-   VisaIIN = [4];
+   % VisaIIN = [4];
    
    MastercardIIN = [51 52 53 54 55];
 
@@ -82,20 +82,46 @@ function isValid = validateCreditCard(cardNumber)
 
    acceptedNetworkPrefixes = [MastercardIIN, AmexIIN, DinersIIN];
    
-   creditCardType = ' ';
     
    if digits(1) == 4
-       creditCardType = 'Visa';
+       if n == 16 || n == 19
+           creditCardType = 'Visa';
+       elseif n == 13
+           creditCardType = 'Old Visa';
+       else
+           disp('Invalid Visa credit card length')
+           return
+       end
    elseif ismember(digits(1)*10+digits(2), acceptedNetworkPrefixes)
        if digits(1) == 5
-           creditCardType = 'Mastercard';
+           if n == 16
+               creditCardType = 'Mastercard';
+           else
+               disp('Invalid Mastercard credit card length')
+               return
+           end
        elseif digits(2) == 4 || digits(2) == 7
-           creditCardType = 'Amex';
+           if n == 15
+               creditCardType = 'Amex';
+           else
+               disp('Invalid Amex credit card length')
+               return
+           end
        else
-           creditCardType = 'Diners';
+           if ismember(n,acceptedCardLengths) && n ~= 13
+               creditCardType = 'Diners';
+           else
+               disp('Invalid Diners credit card length')
+               return
+           end
        end
    elseif ismember(digits(1)*1000+digits(2)*100+digits(3)*10+digits(4),Mastercard2017IIN)
-       creditCardType = 'Mastercard2017';
+       if n == 16
+           creditCardType = 'Mastercard2017';
+       else
+           disp('Invalid Mastercard 2-Series credit card length')
+           return
+       end
    else
        disp('Invalid credit card prefix')
        return
@@ -135,3 +161,9 @@ function isValid = validateCreditCard(cardNumber)
       disp('The credit card number is invalid.');
    end
 end
+
+
+
+
+% Wow commited
+% Hello?
