@@ -1,6 +1,4 @@
 function isValid = validateCreditCard(cardNumber)
-   % Code authors : Vidar Ersson & Maverick I. N.
-
    % Test cases handled:
    % a. Valid and invalid card number lengths (13, 15, 16, 17, 19 digits — different credit card types have different valid lengths)
    % b. Valid and invalid card network prefixes (IIN/BIN ranges), e.g. Visa starts with 4, Mastercard with 51–55, Amex with 34 or 37
